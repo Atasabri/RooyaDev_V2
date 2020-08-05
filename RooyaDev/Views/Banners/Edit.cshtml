@@ -1,0 +1,58 @@
+﻿@model RooyaDev.Models.Banner
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="right-panel" class="right-panel">
+
+    <!-- Header-->
+    <header id="header" class="header">
+        <div class="header-menu">
+            <div class="col-sm-7">
+                <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                <div class="center">
+                    <i class="fa fa-pencil"> </i> <label> Edit Banner</label>
+                </div>
+                <div class="header-left">
+                </div>
+            </div>
+        </div>
+    </header><!-- /header -->
+    <!-- Header-->
+    <div class="col-md-12">
+        <h3 class="white"><i class="fa fa-pencil"></i></h3> <hr />
+        <form action="~/Banners/Edit" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            @Html.Hidden("ID",Model.ID)
+            <div class="input-group">
+                <span class="input-group col-md-4" id="basic-addon3">First Head</span>
+                <input type="text" class="form-control col-md-8" value="@Model.FirstHead" name="FirstHead" required id="basic-url" aria-describedby="basic-addon3">
+            </div> <br />
+            <div class="input-group">
+                <span class="input-group col-md-4" id="basic-addon3">First Head AR</span>
+                <input type="text" class="form-control col-md-8" value="@Model.FirstHead_AR" name="FirstHead_AR" required id="basic-url" aria-describedby="basic-addon3">
+            </div> <br />
+            <div class="input-group">
+                <span class="input-group col-md-4" id="basic-addon3">Second Head</span>
+                <input type="text" class="form-control col-md-8" value="@Model.SecondHead" name="SecondHead" required id="basic-url" aria-describedby="basic-addon3">
+            </div> <br />
+            <div class="input-group">
+                <span class="input-group col-md-4" id="basic-addon3">Second Head AR</span>
+                <input type="text" class="form-control col-md-8" value="@Model.SecondHead_AR" name="SecondHead_AR" required id="basic-url" aria-describedby="basic-addon3">
+            </div> <br />
+            <div class="input-group">
+                <span class="input-group col-md-4" id="basic-addon3">Link</span>
+                <input type="text" class="form-control col-md-8" value="@Model.Link" name="Link" required id="basic-url" aria-describedby="basic-addon3">
+            </div> <br />
+
+            <div class="input-group">
+                <span class="input-group col-md-4" id="basic-addon3">Upload Photo</span>
+                <input type="file" class="col-md-8" name="Photo" id="basic-url" aria-describedby="basic-addon3">
+            </div> <br />
+            <button type="submit" class="btn btn-success">save</button>
+        </form>
+    </div>
+</div>
+

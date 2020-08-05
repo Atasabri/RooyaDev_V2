@@ -1,0 +1,59 @@
+/*
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  
+=     00   00 00 00   00 00 00   00 00 00   00 00 00   00 00    =
+=     00   00    00        00    00    00   00    00   00       =
+=     00   00    00      00      00    00   00    00   00       =
+=     00   00    00    00        00    00   00    00   00       =
+=  00 00   00 00 00   00 00 00   00 00 00   00 00 00   00       =
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+*/
+/*@font-face {
+    font-family: "helveticaneueltarabic-light";
+    src: url('../fonts/helveticaneueltarabic-light.eot');
+    src: url('../fonts/helveticaneueltarabic-light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/helveticaneueltarabic-light.svg#DroidKufi Regular') format('svg'),
+    url('../fonts/helveticaneueltarabic-light.woff') format('woff'),
+    url('../fonts/helveticaneueltarabic-light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "helveticaneueltarabic-bold";
+    src: url('../fonts/helveticaneueltarabic-bold.eot');
+    src: url('../fonts/helveticaneueltarabic-bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/helveticaneueltarabic-bold.svg#DroidKufi Regular') format('svg'),
+        url('../fonts/helveticaneueltarabic-bold.woff') format('woff'),
+        url('../fonts/helveticaneueltarabic-bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}*/
+@font-face {
+    font-family: "JF-Flat-light";
+    src: url('../../fonts/JF-Flat-light.eot');
+    src: url('../../fonts/JF-Flat-lightd41d.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/JF-Flat-light.svg#DroidKufi Regular') format('svg'),
+        url('../../fonts/JF-Flat-light.woff') format('woff'),
+        url('../../fonts/JF-Flat-light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "JF-Flat-medium";
+    src: url('../../fonts/JF-Flat-medium.eot');
+    src: url('../../fonts/JF-Flat-mediumd41d.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/JF-Flat-medium.svg#DroidKufi Regular') format('svg'),
+        url('../../fonts/JF-Flat-medium.woff') format('woff'),
+        url('../../fonts/JF-Flat-medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "JF-Flat-regular";
+    src: url('../../fonts/JF-Flat-regular.eot');
+    src: url('../../fonts/JF-Flat-regulard41d.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/JF-Flat-regular.svg#DroidKufi Regular') format('svg'),
+        url('../../fonts/JF-Flat-regular.woff') format('woff'),
+        url('../../fonts/JF-Flat-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

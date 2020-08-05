@@ -1,0 +1,79 @@
+﻿@model IEnumerable<RooyaDev.Models.Service>
+@using RooyaDev.Models
+@{
+    ViewBag.Title = SiteResource.Services;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    string code = "en";
+    string aa = "right";
+    if (Request.Cookies["Language"] != null)
+    {
+        if (Request.Cookies["Language"].Value == "ar")
+        {
+            code = "ar";
+            aa = "left";
+        }
+    }
+}
+<div class="page">
+    <div class="image" style="background-image: url(../../images/createwebsite-image.jpg)"></div>
+    <div class="text">
+        <div class="container">
+            <img src="~/images/services.png" alt="">
+            <span>@SiteResource.Services</span>
+        </div>
+    </div>
+</div>
+
+@if (code == "en")
+{
+    foreach (var item in Model)
+    {
+        <div class='joinnow'>
+            <div class='container'>
+                <div class='right col-lg-7'>
+                    <span>@item.Name</span>
+                    <p>
+                    @string.Join(" ",item.Description.Split(' ').Take(15).ToArray())  ...     
+                    </p>
+                </div>
+                <div class='left col-lg-5'>
+                    <img src='~/Uploads/Services/@(item.ID).jpg' alt=''>
+                    <div class='text'>
+                        <a href="~/Home/Service/@(item.ID)">@SiteResource.LearnMore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <div class='joinnow'>
+            <div class='container'>
+                <div class='right col-lg-7'>
+                    <span>@item.Name_AR</span>
+                    <p>
+                        @string.Join(" ",item.Description_AR.Split(' ').Take(15).ToArray()) ...
+                    </p>
+                </div>
+                <div class='left col-lg-5'>
+                    <img src='~/Uploads/Services/@(item.ID).jpg' alt=''>
+                    <div class='text'>
+                        <a href="~/Home/Service/@(item.ID)">@SiteResource.LearnMore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+}
+
+
+<div class='info'>
+    <div class='container'>
+    </div>
+</div>
+

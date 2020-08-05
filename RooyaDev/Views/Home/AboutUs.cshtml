@@ -1,0 +1,119 @@
+﻿@model IEnumerable<RooyaDev.Models.Team>
+@using RooyaDev.Models
+@{
+    ViewBag.Title = SiteResource.About;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    string code = "en";
+    string aa = "right";
+    if (Request.Cookies["Language"] != null)
+    {
+        if (Request.Cookies["Language"].Value == "ar")
+        {
+            code = "ar";
+            aa = "left";
+        }
+    }
+}
+
+<style>
+    .team {
+        margin: 80px 0;
+        padding-bottom: 60px;
+        background: white;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.07);
+    }
+
+        .team .cover .overlay {
+            height: 250px;
+            padding-top: 60px;
+            opacity: 0;
+            background: rgba(0, 168, 255, 0.9);
+            -webkit-transition: opacity 0.45s ease;
+            transition: opacity 0.45s ease;
+        }
+
+        .team:hover .cover .overlay {
+            opacity: 1;
+        }
+
+        .team .avatar {
+            position: relative;
+            z-index: 2;
+            margin-top: -60px;
+            border-radius: 50%;
+        }
+
+    .avatar .avatar > img {
+        height: 135px;
+    }
+
+    .team .title {
+        margin: 50px 0;
+    }
+</style>
+
+
+
+<div class="page">
+    <div class="image" style="background-image: url(../../images/createwebsite-image.jpg)"></div>
+    <div class="text">
+        <div class="container">
+            <img src="~/images/about.png" alt="">
+            <span>@SiteResource.About</span>
+            <p>
+                @SiteResource.YourGateway
+            </p>
+        </div>
+    </div>
+</div>
+<section class="OneNews">
+    <div class="container">
+        <div class="OneNewsContainer">
+            <h1>@SiteResource.History</h1>
+            <div class="TopicBody">
+                <h3 style="line-height: 35px;">@SiteResource.HistoryDesc</h3>
+                <div class="Content"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="OneNews">
+    <div class="container">
+        <div class="OneNewsContainer">
+            <h1>@SiteResource.WhyRooya</h1>
+            <div class="TopicBody">
+                <h3 style="line-height: 35px">@SiteResource.WhyDesc</h3>
+                <div class="Content"></div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="team text-center">
+                        <div class="cover" style="background: url('../../Uploads/Team/@(item.ID).jpg'); background-size: cover;">
+                            <div class="overlay text-center">
+                                <h3 class="white">@item.Name</h3>
+                                <h5 class="light light-white">@item.Job</h5>
+                            </div>
+                        </div>
+                        <img src="../../Uploads/Team/@(item.ID).jpg" alt="Team Image" class="avatar" style="height: 120px; width:120px;">
+                        <div class="title">
+                            <h4>@item.Name</h4>
+                            <h5 class="muted regular">@item.Job</h5>
+                        </div>
+                        <div class="socialmedia">
+
+                                <a href="@item.Twitter" class="sm twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="@item.FaceBook" class="sm twitter"><i class="fa fa-facebook"></i></a>
+                                <a href="@item.LinkedIn" class="sm twitter"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+
+

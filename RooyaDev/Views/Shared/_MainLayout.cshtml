@@ -1,0 +1,695 @@
+﻿<!DOCTYPE html>
+@{ 
+    string code = "en";
+    string dir = "";
+    string aa = "left";
+    if (Request.Cookies["Language"] != null)
+    {
+        if (Request.Cookies["Language"].Value == "ar")
+        {
+            code = "ar";
+            dir = "rtl";
+            aa = "right";
+        }
+    }
+}
+@using RooyaDev.Models
+@{ 
+    var Services = new DB().Services.Select(x => new { x.ID, x.Name,x.Name_AR });
+}
+<html dir="@dir" lang="@code">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="UTF-8">
+    <title>@SiteResource.RooayaDevelopment</title>
+    <meta name="Description" content="" />
+    <meta name="Keywords" content="" />
+    <!--ATTA-->
+    <meta name="Keywords" content="التسويق الالكتروني, تصميم المواقع والتطبيقات, انشاء المواقع الالكترونية, عمل التطبيقات والمواقع, التطبيقات, تصميم تطبيقات الجوال, افضل شركة لتصميم التطبيقات, صناعة التطبيقات, أفضل شركة لتصنيع التطبيقات, شركات الانتاج الفني , E-marketing, web design and applications, web site creation, application and site work, applications, mobile application design, best application design company, application industry, best application manufacturer, technical production companies " />
+    <!--ATTA-->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="../ar/Home.html">
+    <meta property="og:title" content="" />
+    <meta property="og:image:user_generated" content="true">
+    <meta property="og:description" content="" />
+    <meta property="og:site_name" content="" />
+    <link rel="shortcut icon" href="~/images/Ro2iaen.png" type="image/x-icon">
+    <link rel="icon" href="~/images/Ro2iaen.png" type="image/x-icon">
+    <!-- IE Compatibility Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- First Mobile Meta  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.css">
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <link rel="stylesheet" href="~/Content/prettyPhoto.css">
+    <link rel="stylesheet" href="~/Content/jquery.bxslider.css">
+    <link rel="stylesheet" href="~/Content/font.css">
+    <link rel="stylesheet" href="~/Content/toastr-rtl.css">
+    <link rel="stylesheet" href="~/Content/jquery.mmenu.all.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery.selectBoxIt.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/nprogress.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/photoswipe.css">
+    <link rel="stylesheet" href="~/Content/settings.css">
+    <link href="~/Content/style_@(code).css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+    <style>
+        .tp-banner ul li {
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+             .alltabs img {
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 94%;
+            margin-bottom: -100px;
+        }
+               #o img{
+        width: 41px;
+    }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Arabic+Kufi" rel="stylesheet">
+</head>
+<body style="font-family:Comic Sans MS , Droid Arabic Kufi">
+    <div style="position: relative;" class="fade out">
+        <div class="header-mainslider">
+            <header>
+                <div class="top animated wow">
+                    <div class="container">
+                        <div class="logo logo2">
+                            <div class="Logo">
+                                <a href="~/Home/Index" id="SITENAME" data-sitename='~/Home/Index'>
+                                    <img src="~/images/Ro2ia@(code).png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right social-media">
+                            <ul>
+                                <li class="OpenMenu sm"><a href="#menu"><i class="fa fa-bars"></i></a></li>
+                                <li id="test" class="OpenMenu sm" style="width:75px;">
+                                    <a href="#">@SiteResource.Language</i></a>
+                                    <ul>
+                                        <li><a href="~/Home/Language?Code=ar">AR</a></li>
+                                        <li><a href="~/Home/Language?Code=en">EN</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sm prices" style="width:75px;">
+                                    <a href="#">@SiteResource.Language</a>
+                                    <ul>
+                                        <li><a href="~/Home/Language?Code=ar">AR</a></li>
+                                        <li><a href="~/Home/Language?Code=en">EN</a></li>
+                                    </ul>
+                                </li>
+                              
+                            </ul>
+                            <ul>
+                                <li class="sm twitter"><a href="https://twitter.com/DevRooya" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li class="sm facebook"><a href="https://www.facebook.com/rooyadeve/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li class="sm youtube"><a href="https://www.youtube.com/channel/UCZI9db6MaQ-yhiVj9UDjCQg" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+                                <li class="sm linkedin"><a href="https://www.linkedin.com/company/rooya-development/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                @if (Session["Login"] != null)
+                                {
+                                    int id = int.Parse(Session["Login"].ToString());
+                                    User user = new DB().Users.Find(id);
+                                    <li style="background-color:inherit">@user.Name</li>
+                                }
+                            </ul>
+                            <ul>
+                                <li class='lang'><a href='' class='facebookHeader'><i class='fa fa-globe'></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="left ContactsInfo">
+                            <p class="email"><a href="mailto:info@rooyadev.com">info@rooyadev.com</a><i class="icon icon-Plaine" aria-hidden="true"></i></p>
+                            <p class="phone"><a href="tel:+201000092584">201000092584+</a> | <a href="tel:+966531071434">966531071434+</a><i class="icon icon-Phone2" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom animated wow">
+                    <div class="container">
+                        <div class="left ContactsInfo">
+                            <p class="phone">
+                                <i class="icon icon-Phone2" aria-hidden="true"></i>
+                                 <br />
+                                <a href="tel:+9660531071434">9660531071434+</a> 
+                                <br />
+                                <a href="tel:+201000092584"> 201000092584+</a>
+                            </p>
+                        </div>
+
+                        @if (code == "en")
+                        {
+                            <div class="logo logo1 col-lg-3 col-md-3 col-sm-12 col-xs-6" style="float:left">
+                                <div class="Logo">
+                                    <a href="~/Home/Index" id="SITENAME" data-sitename='~/Home/Index'>
+                                        <img src="~/images/Ro2iaen.png" style="width:150px; float:left" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="menu col-lg-7 col-md-7">
+                                <ul>
+                                    <li><a class='' href='~/Home/Index'>@SiteResource.Home</a></li>
+                                    <li>
+                                        <a class='' href='~/Home/Services'>@SiteResource.Services</a>
+                                        <ul>
+                                            @foreach (var item in Services)
+                                            {
+                                                <li>
+                                                    <a class='' href='~/Home/Service/@item.ID'>@item.Name</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                    @if (Session["Login"] != null)
+                                    {
+                                        int id = int.Parse(Session["Login"].ToString());
+                                        <li>
+                                            <a class='' href='#'>@SiteResource.Projects</a>
+                                            <ul>
+                                                @foreach (var item in new DB().Projects.Where(x=>x.User_ID==id&&x.UnderWork==true))
+                                                {
+                                                    <li>
+                                                        <a class='' href='~/Home/Project/@item.ID'>@item.Name</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+
+
+                                    <li>
+                                        <a class='' dir="ltr" href='~/Home/AboutUs'>@SiteResource.About</a>
+                                        <ul>
+                                            <li>
+                                                <a class='' href='~/Home/Gallery'>@SiteResource.Portfolio</a>
+                                            </li>
+                                            <li>
+                                                <a class='' href='~/Home/ContactUs'>@SiteResource.Contact</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    
+                                    <li>
+                                        <a class='' href='~/Home/Pricing'>@SiteResource.Pricing</a>
+                                    </li>
+                                    <li>
+                                        <a class='' href='~/Home/Carrers'>@SiteResource.Carrers</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            if (Session["Login"] == null)
+                            {
+                                <div class="client-area col-lg-1 col-md-1 col-sm-4 col-xs-4"><a href="~/Home/Login">@SiteResource.Login</a></div>
+                                <div class="client-area col-lg-1 col-md-1 col-sm-2 col-xs-2"><a href="~/Home/Register">@SiteResource.Register</a></div>
+                            }
+                            else
+                            {
+                                <div class="client-area col-lg-1 col-md-1 col-sm-4 col-xs-4"><a href="~/Home/SignOut">@SiteResource.SignOut</a></div>
+                            }
+
+                        }
+                        else
+                        {
+                            if (Session["Login"] == null)
+                            {
+                                <div class="client-area col-lg-1 col-md-1 col-sm-6 col-xs-6"><a href="~/Home/Login" style="font-size:10px">@SiteResource.Login</a></div>
+                                <div class="client-area col-lg-1 col-md-1 col-sm-4 col-xs-4"><a href="~/Home/Register" style="font-size:10px">@SiteResource.Register</a></div>
+                            }
+                            else
+                            {
+                                <div class="client-area col-lg-1 col-md-1 col-sm-4 col-xs-4"><a href="~/Home/SignOut" style="font-size:10px">@SiteResource.SignOut</a></div>
+                            }
+                            <div class="menu col-lg-7 col-md-7" lang="@code">
+                                <ul>
+                                    <li><a class='' href='~/Home/Index'>@SiteResource.Home</a></li>
+                                    <li>
+                                        <a class='' href='~/Home/Services'>@SiteResource.Services</a>
+                                        <ul>
+                                            @foreach (var item in Services)
+                                            {
+                                                <li>
+                                                    <a class='' href='~/Home/Service/@item.ID'>@item.Name_AR</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                    @if (Session["Login"] != null)
+                                    {
+                                        int id = int.Parse(Session["Login"].ToString());
+                                        <li>
+                                            <a class='' href='#'>@SiteResource.Projects</a>
+                                            <ul>
+                                                @foreach (var item in new DB().Projects.Where(x => x.User_ID == id && x.UnderWork == true))
+                                                {
+                                                    <li>
+                                                        <a class='' href='~/Home/Project/@item.ID'>@item.Name</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+
+
+                                    <li>
+                                        <a class='' href='~/Home/AboutUs'>@SiteResource.About</a>
+                                        <ul>
+                                            <li>
+                                                <a class='' href='~/Home/Gallery'>@SiteResource.Portfolio</a>
+                                            </li>
+                                            <li>
+                                                <a class='' href='~/Home/ContactUs'>@SiteResource.Contact</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                   
+                                    <li>
+                                        <a class='' href='~/Home/Pricing'>@SiteResource.Pricing</a>
+                                    </li>
+                                    <li>
+                                        <a class='' href='~/Home/Carrers'>@SiteResource.Carrers</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="logo logo1 col-lg-3 col-md-3 col-sm-12 col-xs-6">
+                                <div class="Logo" style="float:right">
+                                    <a href="~/Home/Index" id="SITENAME" data-sitename='~/Home/Index'>
+                                        <img src="~/images/Ro2iaar.png" style="width: 150px; " alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </header>
+
+            @RenderBody()
+
+            <style>
+                .zoom {
+                    position: fixed;
+                    bottom: 45px;
+                    right: 24px;
+                    height: 70px;
+                }
+
+                .zoom-fab {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    border-radius: 50%;
+                    background-color: #009688;
+                    vertical-align: middle;
+                    text-decoration: none;
+                    text-align: center;
+                    transition: 0.2s ease-out;
+                    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                    cursor: pointer;
+                    color: #FFF;
+                }
+
+                .zoom-fab1 {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    border-radius: 50%;
+                    vertical-align: middle;
+                    text-decoration: none;
+                    text-align: center;
+                    transition: 0.2s ease-out;
+                    cursor: pointer;
+                    color: #FFF;
+                }
+
+                .zoom-fab:hover {
+                    background-color: #4db6ac;
+                    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+                }
+
+                .zoom-btn-large {
+                    width: 60px;
+                    height: 60px;
+                    line-height: 60px;
+                }
+
+
+
+
+
+
+                .zoom-btn-person1 {
+                    background-color: blue;
+                }
+
+                    .zoom-btn-person1:hover {
+                        background-color: #4db6ac;
+                    }
+
+                .zoom-btn-doc1 {
+                    background-color: green;
+                }
+
+                    .zoom-btn-doc1:hover {
+                        background-color: #098209;
+                    }
+
+
+
+
+
+                .zoom-menu {
+                    position: absolute;
+                    right: 70px;
+                    left: auto;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    height: 100%;
+                    width: 500px;
+                    list-style: none;
+                    text-align: right;
+                }
+
+                    .zoom-menu li {
+                        display: inline-block;
+                        margin-right: 20px;
+                    }
+
+                .zoom-card {
+                    position: absolute;
+                    right: 150px;
+                    bottom: 20px;
+                    transition: box-shadow 0.25s;
+                    padding: 24px;
+                    color: #FFF;
+                }
+
+                    .zoom-card ul {
+                        -webkit-padding-start: 0;
+                        list-style: none;
+                        text-align: left;
+                    }
+
+                .scale-transition {
+                    transition: transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;
+                }
+
+                .scale-out {
+                    transform: scale(0);
+                    transition: transform 0.2s !important;
+                }
+
+                .scale-out2 {
+                    transform: scale(1);
+                    transition: transform 0.2s !important;
+                }
+
+                .scale-out1 {
+                    transform: scale(1);
+                    transition: transform 0.2s !important;
+                }
+            </style>
+
+            <div class="zoom">
+                <a class="zoom-fab zoom-btn-large" id="zoomBtn">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <ul class="zoom-menu">
+
+                    <li class="ksa">
+                        <a class="zoom-fab1 zoom-btn-sm zoom-btn-person scale-transition scale-out">
+                            <img src="~/images/ksa.png" style="width:41px" />
+                        </a>
+                    </li>
+
+                    <li class="egy">
+                        <a class="zoom-fab1 zoom-btn-sm zoom-btn-doc scale-transition scale-out">
+                            <img src="~/images/egy.png" style="width:61px" />
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="zoom-card scale-transition scale-out2 egyp" style="right 120px;">
+                    <ul class="zoom-card-content">
+
+                        <li style="margin-bottom:30px;">
+                            <a class="zoom-fab zoom-btn-sm zoom-btn-person1 scale-transition scale-out" href="tel:201000094045">
+                                <i class="fa fa-phone"></i>
+                            </a>
+                        </li>
+
+                        <li style="margin-bottom:40px;">
+                            <a class="zoom-fab zoom-btn-sm zoom-btn-doc1 scale-transition scale-out" target="_blank" href="https://api.whatsapp.com/send?phone=20100094045&text=">
+                                <i class="fa fa-whatsapp"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="zoom-card scale-transition scale-out1 ksaa" style="right:64px">
+                    <ul class="zoom-card-content">
+
+                        <li style="margin-bottom:30px;">
+                            <a class="zoom-fab zoom-btn-sm zoom-btn-person1 scale-transition scale-out" href="tel:+966531071434">
+                                <i class="fa fa-phone"></i>
+                            </a>
+                        </li>
+
+                        <li style="margin-bottom:40px;">
+                            <a class="zoom-fab zoom-btn-sm zoom-btn-doc1 scale-transition scale-out" target="_blank" href="https://api.whatsapp.com/send?phone=966531071434&text=">
+                                <i class="fa fa-whatsapp"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <footer>
+                <div class="top">
+                    <div class="container">
+                        <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 slideInRight animated wow">
+                            <span>@SiteResource.WhyRooya</span>
+                            <ul>
+                             
+                                <li>@SiteResource.HomeDescFotter</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-lg-offset-0 col-md-4 col-sm-4 col-xs-12 slideInRight animated wow">
+                            <span>@SiteResource.Navigation</span>
+                            <ul>
+                                <li><a href='~/Home/Index'>@SiteResource.Home</a></li>
+                                <li><a href='~/Home/AboutUs'>@SiteResource.About</a></li>
+                                <li><a href='~/Home/ContactUs'>@SiteResource.Contact</a></li>
+                                <li><a href='~/Home/Gallery'>@SiteResource.Portfolio</a></li>
+                                <li><a href='~/Home/Services'>@SiteResource.Services</a></li>
+                                <li><a href='~/Home/Pricing'>@SiteResource.Pricing</a></li>
+                                <li><a href='~/Home/Carrers'>@SiteResource.Carrers</a></li>
+                                <li><a href='~/Home/Login'> @SiteResource.Login</a></li>
+                                <li><a href='~/Home/Register'>@SiteResource.Register</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12 details slideInUp animated wow">
+                            <div class="col-lg-1 col-md-0 col-sm-0 col-xs-0"></div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <span>@SiteResource.Phone<i class="icon icon-Phone2"></i></span>
+                                <p>
+                                    <a href="tel:+201000092584">
+                                        <img src="~/images/egy.png" style="width:31px;" />
+                                        201000092584+
+                                    </a>
+                                    <br />
+                                    <a href="tel:+9660531071434">
+                                        <img src="~/images/ksa.png" width="25" />
+                                        966531071434+
+                                    </a>
+                                </p>                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <span>@SiteResource.Email<i class="icon icon-Plaine"></i></span>
+                                <p><a href="mailto:info@rooyadev.com">info@rooyadev.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="container">
+                        <p>Copyright © 2018 RooyaDev.</p>
+                        <div class="socialmedia">
+                            <a href="https://twitter.com/DevRooya" target="_blank" class="sm twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/rooyadeve/" target="_blank" class="sm facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.youtube.com/channel/UCZI9db6MaQ-yhiVj9UDjCQg" target="_blank" class="sm youtube"><i class="fa fa-youtube-play"></i></a>
+                            <a href="https://plus.google.com/106113238329721086698" target="_blank" class="sm linkedin"><i class="fa fa-google-plus"></i></a>
+                            <a href="https://www.instagram.com/rooyadev/" target="_blank" class="sm instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/rooya-development/" target="_blank" class="sm g-plus"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <nav id="menu">
+                <ul>
+                    <li>
+                        <a class='' href='~/Home/Index'>@SiteResource.Home</a>
+                    </li>
+                    <li>
+                        <a class='' href='~/Home/Services'>@SiteResource.Services</a>
+                        <ul>
+                            @if (code == "en")
+                            {
+                                foreach (var item in Services)
+                                {
+                                    <li>
+                                        <a class='' href='~/Home/Service/@(item.ID)'>@item.Name</a>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                foreach (var item in Services)
+                                {
+                                    <li>
+                                        <a class='' href='~/Home/Service/@(item.ID)'>@item.Name_AR</a>
+                                    </li>
+                                }
+                            }
+
+
+                        </ul>
+                    </li>
+                    @if (Session["Login"] != null)
+                    {
+                        int id = int.Parse(Session["Login"].ToString());
+                        <li>
+                            <a class='' href='#'>@SiteResource.Projects</a>
+                            <ul>
+                                @foreach (var item in new DB().Projects.Where(x => x.User_ID == id && x.UnderWork == true))
+                                {
+                                    <li>
+                                        <a class='' href='~/Home/Project/@item.ID'>@item.Name</a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    <li>
+                        <a class='' href='~/Home/AboutUs'>@SiteResource.About</a>
+                        <ul>
+                            <li>
+                                <a class='' href='~/Home/Gallery'>@SiteResource.Portfolio</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class='' href='~/Home/ContactUs'>@SiteResource.Contact</a>
+                    </li>
+                    <li>
+                        <a class='' href='~/Home/Pricing'>@SiteResource.Pricing</a>
+                    </li>
+                    <li>
+                        <a class='' href='~/Home/Carrers'>@SiteResource.Carrers</a>
+                    </li>
+                    @if (Session["Login"] == null)
+                    {
+                        <li>
+                            <a class='' href='~/Home/Login'>@SiteResource.Login</a>
+                        </li>
+                        <li>
+                            <a class='' href='~/Home/Register'>@SiteResource.Register</a>
+                        </li>
+                            }
+                            else
+                            {
+                                int id= int.Parse(Session["Login"].ToString());
+                                User user = new DB().Users.Find(id);
+                          <li>
+                                <a class='' href='#'>@user.Name</a>
+                             <ul>
+                                <li>
+                                    <a class='' href='~/Home/SignOut'>@SiteResource.SignOut</a>
+                                </li>                          
+                            </ul>
+                        </li>
+                    }
+
+                    <li class="Icons">
+                        <a href="https://twitter.com/DevRooya" target="_blank" class="sm twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/rooyadeve/" target="_blank" class="sm facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/channel/UCZI9db6MaQ-yhiVj9UDjCQg" target="_blank" class="sm youtube"><i class="fa fa-youtube-play"></i></a>
+                        <a href="https://plus.google.com/106113238329721086698" target="_blank" class="sm linkedin"><i class="fa fa-google-plus"></i></a>
+                        <a href="https://www.instagram.com/rooyadev/" target="_blank" class="sm instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/rooya-development/" target="_blank" class="sm g-plus"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script type="text/javascript" src="~/Scripts/Script/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/jquery.bxslider.min.js"></script>
+    <script src="~/Scripts/Script/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/js/wow.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/isotope-docs.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/toastr.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/typed.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/twitterFetcher_min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/jquery.selectBoxIt.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/jquery.animateNumber.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/jquery.fancybox8cbb.js?v=2.1.5"></script>
+    <script type="text/javascript" src="../resources/images/fantasybox/helpers/jquery.fancybox-thumbsf2ad.js?v=1.0.7"></script>
+    <script type="text/javascript" src="~/Scripts/Script/nprogress.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/photoswipe.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/photoswipe-ui-default.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/jquery.newsTicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/Script/Custom.js"></script>
+    <script src="~/Scripts/Script/wow.min.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        $('#zoomBtn').click(function () {
+            $('.zoom-btn-sm').toggleClass('scale-out');
+            if (!$('.zoom-card').hasClass('scale-out')) {
+                $('.zoom-card').toggleClass('scale-out');
+            }
+        });
+
+        $('.ksa').click(function () {
+            var btn = $(this);
+            var card = $('.zoom-card');
+
+            if ($('.zoom-card').hasClass('scale-out1')) {
+                $('.zoom-card').toggleClass('scale-out1');
+            }
+            if (btn.hasClass('zoom-btn-person')) {
+            } else if (btn.hasClass('zoom-btn-doc')) {
+            }
+        });
+        $('.egy').click(function () {
+            var btn = $(this);
+            var card = $('.zoom-card');
+
+            if ($('.zoom-card').hasClass('scale-out')) {
+                $('.zoom-card').toggleClass('scale-out');
+            }
+            if (btn.hasClass('zoom-btn-person')) {
+            } else if (btn.hasClass('zoom-btn-doc')) {
+            }
+        });
+
+    </script>
+</body>
+</html>

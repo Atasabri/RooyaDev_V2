@@ -1,0 +1,357 @@
+﻿@model RooyaDev.Models.Project
+@using RooyaDev.Models
+@using System.IO
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    string code = "en";
+    string aa = "right";
+    if (Request.Cookies["Language"] != null)
+    {
+        if (Request.Cookies["Language"].Value == "ar")
+        {
+            code = "ar";
+            aa = "left";
+        }
+    }
+    int finished = Model.Tasks.Where(x => x.Finished.HasValue == true).Count();
+    int UnderWork = Model.Tasks.Where(x => x.Finished.HasValue==false).Count();
+    int All = Model.Tasks.Count();
+
+    if(All!=0)
+    {
+        int finishedN = (finished / All) * 100;
+        int UnderWorkN = (UnderWork / All) * 100;
+    }
+
+
+}
+<link href="~/Content/flexslider.css" rel="stylesheet" />
+<link href="~/Content/flipclock.css" rel="stylesheet" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="~/Scripts/Script/flipclock.js"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Task', 'Hours per Day'],
+              ['@SiteResource.Finished', @Model.Tasks.Where(x=>x.Finished==true).Count()],
+              ['@SiteResource.UnderWork', @Model.Tasks.Where(x => x.Finished.HasValue == false).Count()]
+            ]);
+            var options = {
+                title: '@SiteResource.Tasks'
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+</script>
+
+<div class="page">
+    <div class="image" style="background-image: url(../../Uploads/Project_Logo/@(Model.ID).jpg)"></div>
+    <div class="text">
+        <div class="container">
+            <span>@Model.Name</span>
+            <p>
+                @SiteResource.WatchYourProjectHere
+            </p>
+        </div>
+    </div>
+</div>
+<div class="Jobs">
+    <br><br><br><br>
+    <div class="Middle">
+        <div class="container">
+            <ul>
+                <li>
+                    <div class='Top clearfix'>
+                        <p>@Model.Name</p>
+                        <i class='fa fa-arrow-down'></i>
+                    </div>
+                    <div class='Content' style='padding-left:45px;'>
+                        <p>
+                            <span id="result_box" class="short_text" lang="en" taben/home="-1">
+                            <span class="hps">
+                                <ul>
+                                    <li>@SiteResource.ProjectName : @Model.Name</li>
+                                    <li>@SiteResource.ProjectDesc : @Model.Description</li>
+                                </ul>
+                            </span>
+                            </span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="Jobs">
+    <br><br><br><br>
+    <div class="Middle">
+        <div class="container">
+            <ul>
+                <li>
+                    <div class='Top clearfix'>
+                        <p>@SiteResource.TheAnalytics</p>
+                        <i class='fa fa-arrow-down'></i>
+                    </div>
+                    <div class='Content' style='padding-left:45px;'>
+                        <p><span id="result_box" class="short_text" lang="en" taben/home="-1"><span class="hps"></span>
+                            <div class="row">
+                                <!-- Column -->
+                                <div class="col-lg-9 col-md-9">
+                                    <div id="piechart" style="width:800px; height:400px;"></div>
+                                </div>
+                            </div>
+                        </span></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="Jobs">
+    <br><br><br><br>
+    <div class="Middle">
+        <div class="container">
+            <ul>
+                <li>
+                    <div class='Top clearfix'>
+                        <p>@SiteResource.DeadLine</p>
+                        <i class='fa fa-arrow-down'></i>
+                    </div>
+                    <div class='Content' style='padding-left:45px;'>
+                        <p>
+                            <span id="result_box" class="short_text" lang="en" taben/home="-1">
+                            <span class="hps"></span>
+                            <br />
+                            <br />
+                            <div class="clock" style="margin:2em;"></div>
+                            <div class="message"></div>
+                            </span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="Jobs">
+    <br><br><br><br>
+    <div class="Middle">
+        <div class="container">
+            <ul>
+                <li>
+                    <div class='Top clearfix'>
+                        <p>@SiteResource.Tasks</p>
+                        <i class='fa fa-arrow-down'></i>
+                    </div>
+                    <div class='Content' style='padding-left:45px;'>
+                        <p>
+                            <span id="result_box" class="short_text" lang="en" taben/home="-1">
+                            <span class="hps">
+                                <ul class="list-group" style="list-style:none;">
+                                    @foreach (var item in Model.Tasks)
+                                    {
+                                        if (item.Finished.HasValue)
+                                        {
+                                            <li class="item">
+                                                <i class="fa fa-check"></i>
+                                                <span>@item.Name</span>
+
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="item">
+                                                <i class="fa fa-close"></i>
+                                                <span>@item.Name</span>
+
+                                            </li>
+                                        }
+                                    }
+
+                                </ul>
+                            </span>
+                            </span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class='lastcustomers customerspage'>
+    <div class='content'>
+        <div class='bottom'>
+            <div class='container'>
+                <div class='grid clearfix' id='gridid'>
+                    @foreach (var item in Directory.GetFiles(Server.MapPath("~/Uploads/Projects"), Model.ID + "*"))
+                    {
+                        string name = Path.GetFileName(item);
+                        <div class='element-item customers 1 2 col-lg-4 col-md-4 col-sm-4' data-category='1 2'>
+                            <div>
+                                <div class='my-gallery' itemscope itemtype=''>
+                                    <figure itemprop='associatedMedia' itemscope itemtype=''>
+                                        <a href='~/Uploads/Projects/@name' itemprop='contentUrl' data-size='800x800' style='padding:0px;min-height: 0px;'>
+                                            <img src='~/Uploads/Projects/@name' alt=''>
+                                            <img src='~/Uploads/Projects/@name' itemprop='thumbnail' style='display: none;' />
+                                        </a>
+                                    </figure>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    }
+                    @foreach (var item in Model.Project_Videos)
+                    {
+                        <div class='element-item customers 3 col-lg-4 col-md-4 col-sm-4' data-category='3'>
+                            <div>
+                                <div class='my-gallery' itemscope itemtype=''>
+                                    <figure itemprop='associatedMedia' itemscope itemtype=''>
+                                        <a href='@item.Link' itemprop='contentUrl' data-size='800x800' style='padding:0px;min-height: 0px;'>
+                                            <iframe width="420" height="315"
+                                                    src="@item.Link"></iframe>
+                                            <iframe width="420" height="315"
+                                                    src="@item.Link" itemprop='thumbnail' style='display: none;'></iframe>
+                                        </a>
+                                    </figure>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+
+                <div class="pswp" taben/home="-1" role="dialog" aria-hidden="true">
+
+                <div class="pswp__bg"></div>
+                <!-- Slides wrapper with overflow:hidden. -->
+                <div class="pswp__scroll-wrap">
+                    <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+                    <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+
+                    <div class="pswp__ui pswp__ui--hidden">
+                        <div class="pswp__top-bar">
+                            <!--  Controls are self-explanatory. Order can be changed. -->
+                            <div class="pswp__counter"></div>
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                            <!--<button class="pswp__button pswp__button--share" title="Share"></button>-->
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                            <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                            <!-- element will get class pswp__preloader--active when preloader is running -->
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+
+<div class="row text-center container">
+    <div class="row col-md-12">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="input-group">
+                @using (Ajax.BeginForm("AddComment", "Home", new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "DIV" }))
+                {
+                    <input type="text" name="Comment" required class="form-control" placeholder="@SiteResource.Comment">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="submit">@SiteResource.add</button>
+                    </span>
+                }
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-md-2"></div>
+    </div><!-- /.row -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" id="DIV">
+                <table class="table table-hover text-center">
+                    @if (Session["Comments"] != null)
+                    {
+                        foreach (var item in Session["Comments"] as List<Comment>)
+                        {
+                            <tr>
+                                <td>@item.Comment1</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                @using (Html.BeginForm("SendComments", "Home", new { project_id = Model.ID }, FormMethod.Post, null))
+                {
+                    <button type="submit" class="container btn btn-primary col-md-12 col-sm-12">@SiteResource.Sendtoadmin</button>
+                }
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+
+<br /><br />
+@{
+    double seconds = (Model.Expire_Date - DateTime.Now).TotalSeconds;
+}
+<script type="text/javascript">
+        var clock;
+
+        $(document).ready(function () {
+            var clock;
+
+            clock = $('.clock').FlipClock({
+                clockFace: 'DailyCounter',
+                autoStart: false,
+                callbacks: {
+                    stop: function () {
+                        $('.message').html('The clock has stopped!')
+                    }
+                }
+            });
+
+            clock.setTime(@seconds);
+            clock.setCountdown(true);
+            clock.start();
+
+        });
+</script>

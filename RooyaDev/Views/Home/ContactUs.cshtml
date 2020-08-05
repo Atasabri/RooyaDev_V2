@@ -1,0 +1,144 @@
+﻿@using RooyaDev.Models
+@{
+    ViewBag.Title = SiteResource.Contact;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    string code = "en";
+    string aa = "right";
+    if (Request.Cookies["Language"] != null)
+    {
+        if (Request.Cookies["Language"].Value == "ar")
+        {
+            code = "ar";
+            aa = "left";
+        }
+    }
+}
+
+
+
+<div class="page">
+    <div class="image" style="background-image: url(../../images/createwebsite-image.jpg)"></div>
+    <div class="text">
+        <div class="container">
+            <img src="~/images/contact.png" alt="">
+            <span>@SiteResource.Contact</span>
+        </div>
+    </div>
+</div>
+
+
+
+<br />
+<br />
+<br />
+
+
+<div class='contactus'>
+    <div class='container'>
+        <div class='col-lg-3 col-md-3 col-sm-12 first'></div>
+        <div class='col-lg-6 col-md-6 col-sm-12 first'>
+            <div class='box'>
+                <div class='title'>
+                    <img src='~/images/contactus-icon-1.png' alt=''>
+                    <span>@SiteResource.Location</span>
+                </div>
+                <div class='contactinfo'>
+                    <div class='one' style="text-align:center;">
+                        <div class="btn-group" role="group" aria-label="..">
+                            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1728.1810967759434!2d30.949010000000012!3d29.961687000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x109e343970d6e4a4!2z2LTYsdmD2Kkg2LHYpNmK2Kcg2KfZhNiq2LfZiNixINmE2YTYqNix2YXYrNmK2KfYqg!5e0!3m2!1sen!2seg!4v1527775334666" target="test" class="btn btn-default">@SiteResource.Cairo</a>
+                            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3710.6405859221595!2d39.15514481494176!3d21.560904585712624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDMzJzM5LjMiTiAzOcKwMDknMjYuNCJF!5e0!3m2!1sen!2seg!4v1525281285539" width="600" target="test" class="btn btn-default">@SiteResource.KSA</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='col-lg-3 col-md-3 col-sm-12 first'></div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container-fluid-kamn">
+    <div class="row">
+        <div>
+            <iframe name="test" class="center-block" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3710.6405859221595!2d39.15514481494176!3d21.560904585712624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDMzJzM5LjMiTiAzOcKwMDknMjYuNCJF!5e0!3m2!1sen!2seg!4v1525281285539" style="border:0;width:80%" allowfullscreen="" height="500" frameborder="1"></iframe>
+            <br>
+
+        </div>
+    </div>
+</div>
+<div class='contactus'>
+    <div class='container'>
+        <div class='col-lg-12 top'>
+            <span>@SiteResource.ContactInfo</span>
+            <p>@SiteResource.Contact</p>
+        </div>
+        <div class='col-lg-5 col-md-6 col-sm-12 first'>
+            <div class='box'>
+                <div class='title'>
+                    <img src='~/images/Mobile Sales.png' alt=''>
+                    <span>@SiteResource.ContactInfo</span>
+                </div>
+                <div class='contactinfo'>
+                    <div class='one'>
+                        <img src='~/images/contactus-icon-3.png' alt=''>
+                        <p>@SiteResource.Cairo: <a href="tel:+201000092584">201000092584+</a></p>
+                    </div>
+                    <div class='one'>
+                        <img src='~/images/contactus-icon-3.png' alt=''>
+                        <p>@SiteResource.KSA : <a href="tel:+9660531071434">966531071434+</a></p>
+                    </div>
+                    <div class='one'>
+                        <img src='~/images/contactus-icon-5.png' alt=''>
+                        <p>
+                            @SiteResource.Email : <a href="mailto:info@rooyadev.com">info@rooyadev.com</a>
+                            <div class='socialmedia'>
+                                <a href="https://twitter.com/DevRooya" target="_blank" class="sm twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/rooyadeve/" target="_blank" class="sm facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.youtube.com/channel/UCZI9db6MaQ-yhiVj9UDjCQg" target="_blank" class="sm youtube"><i class="fa fa-youtube-play"></i></a>
+                                <a href="https://plus.google.com/106113238329721086698" target="_blank" class="sm linkedin"><i class="fa fa-google-plus"></i></a>
+                                <a href="https://www.instagram.com/rooyadev/" target="_blank" class="sm instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/company/rooya-development/" target="_blank" class="sm g-plus"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <form action="~/Home/ContactUs" method="post">
+            <div class="col-lg-7" id="coco">
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <input type="text" id="name" name="Name" required class="form-control" placeholder="@SiteResource.Name">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <input type="email" id="email" name="Email" required class="form-control" placeholder="@SiteResource.Email">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <input type="text" id="location" name="Subject" required class="form-control" placeholder="@SiteResource.Subject">
+                    </div>
+                </div>
+                <div class="row form-group col-md-12">
+                    <textarea placeholder="@SiteResource.Message" required name="Message" cols="30" rows="5" class="form-control"></textarea>
+                </div>
+                <div class="row form-group">
+                    <div class="form-group">
+                        <input id="btn" type="submit" value="@SiteResource.SendMessage" class="btn btn-primary" style="width:100%;">
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
+</div>

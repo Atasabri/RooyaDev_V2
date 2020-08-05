@@ -1,0 +1,331 @@
+﻿@model IEnumerable<Banner>
+@using RooyaDev.Models
+@{
+    ViewBag.Title =SiteResource.RooayaDevelopment ;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    string code = "en";
+    string aa = "right";
+    if (Request.Cookies["Language"] != null)
+    {
+        if (Request.Cookies["Language"].Value == "ar")
+        {
+            code = "ar";
+            aa = "left";
+        }
+    }
+}
+
+<div class="Main-Slider mainslider">
+    <!--
+    #################################
+            - THEMEPUNCH BANNER -
+    #################################
+    -->
+    <div class="tp-banner-container">
+        <div class="tp-banner">
+            <ul>
+                @if (code == "en")
+                {
+                    foreach (var item in Model)
+                    {
+                        <li data-transition="random" data-slotamount="7" data-masterspeed="1000" data-saveperformance="off" data-title="Slide" style="background-image: url(../../Uploads/Banner/@(item.ID).jpg); padding-top: 0; ">
+                            <div class="container">
+                                <div class="tp-caption light_heavy_70_shadowed">
+                                    <ul class="text">
+                                        <li class="tp-caption sft"
+                                            data-speed="1500"
+                                            data-start="1500"
+                                            data-easing="Power4.easeOut"
+                                            data-endspeed="500"
+                                            data-endeasing="Power1.easeIn"
+                                            data-captionhidden="off"><div class='BigTitle'>@item.FirstHead</div></li>
+                                            <li class="tp-caption sfb"
+                                                data-speed="1500"
+                                                data-start="2500"
+                                                data-easing="Power4.easeOut"
+                                                data-endspeed="500"
+                                                data-endeasing="Power1.easeIn"
+                                                data-captionhidden="off">@item.SecondHead</li>
+                                            </ul>
+                                            <ul class="buttonss">
+                                                <li class="buttons tp-caption sfr"
+                                                    data-speed="1500"
+                                                    data-start="3500"
+                                                    data-easing="Power4.easeOut"
+                                                    data-endspeed="500"
+                                                    data-endeasing="Power1.easeIn"
+                                                    data-captionhidden="off">
+                                                    <a href="@item.Link">@SiteResource.ReadMore</a>
+                                                </li>
+                                                <li class="buttons tp-caption sfl"
+                                                    data-speed="1500"
+                                                    data-start="4500"
+                                                    data-easing="Power4.easeOut"
+                                                    data-endspeed="500"
+                                                    data-endeasing="Power1.easeIn"
+                                                    data-captionhidden="off">
+                                                    <a href="~/Home/Pricing">@SiteResource.Order</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                    }
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <li data-transition="random" data-slotamount="7" data-masterspeed="1000" data-saveperformance="off" data-title="Slide" style="background-image: url(../../Uploads/Banner/@(item.ID).jpg); padding-top: 0; ">
+                            <div class="container">
+                                <div class="tp-caption light_heavy_70_shadowed">
+                                    <ul class="text">
+                                        <li class="tp-caption sft"
+                                            data-speed="1500"
+                                            data-start="1500"
+                                            data-easing="Power4.easeOut"
+                                            data-endspeed="500"
+                                            data-endeasing="Power1.easeIn"
+                                            data-captionhidden="off"><div class='BigTitle'>@item.FirstHead_AR</div></li>
+                                            <li class="tp-caption sfb"
+                                                data-speed="1500"
+                                                data-start="2500"
+                                                data-easing="Power4.easeOut"
+                                                data-endspeed="500"
+                                                data-endeasing="Power1.easeIn"
+                                                data-captionhidden="off">@item.SecondHead_AR</li>
+                                            </ul>
+                                            <ul class="buttonss">
+                                                <li class="buttons tp-caption sfr"
+                                                    data-speed="1500"
+                                                    data-start="3500"
+                                                    data-easing="Power4.easeOut"
+                                                    data-endspeed="500"
+                                                    data-endeasing="Power1.easeIn"
+                                                    data-captionhidden="off">
+                                                    <a href="@item.Link">@SiteResource.ReadMore</a>
+                                                </li>
+                                                <li class="buttons tp-caption sfl"
+                                                    data-speed="1500"
+                                                    data-start="4500"
+                                                    data-easing="Power4.easeOut"
+                                                    data-endspeed="500"
+                                                    data-endeasing="Power1.easeIn"
+                                                    data-captionhidden="off">
+                                                    <a href="~/Home/Pricing">@SiteResource.Order</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                    }
+                }
+
+
+            </ul>
+            <div class="tp-bannertimer"></div>
+        </div>
+    </div>
+    <div class="scroll-down" style="background-image:url(../../images/scroll-down.png)"></div>
+</div>
+
+<div class="welcome" id="Welcome">
+    <div class="container main">
+        <div class="col-lg-10 col-lg-offset-1 col-sm-12 col-sm-offset-0">
+            <!-- ATTA-->
+            <span>
+                <video width="100%" controls>
+                    <source src="~/Gallery/video.mp4" type="video/mp4">
+                </video>
+            </span>
+            <!-- ATTA-->
+        </div>
+        <p class="flipInX animated wow">
+           @SiteResource.YourGateway
+        </p>
+    </div>
+    <div class="services">
+        <div class='col-lg-4 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 zoomIn animated wow'>
+            <div class='right'>
+                <div class='imgg'>
+                    <img src='~/ico/1.png' alt='Design and application programming'>
+                </div>
+                <span>@SiteResource.MobileDevelopment</span>
+                <p>@SiteResource.MobileDevDesc</p>
+            </div>
+            <div class='left'>
+                <div class='imgg'></div>
+
+            </div>
+        </div>
+        <div class='col-lg-4 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 zoomIn animated wow'>
+            <div class='right'>
+                <div class='imgg'>
+                    <img src='~/ico/3.png' alt='Design and programming of Websites'>
+                </div>
+                <span>@SiteResource.WebDevelopment</span>
+                <p>@SiteResource.WebDevDesc</p>
+            </div>
+            <div class='left'>
+                <div class='imgg1'></div>
+
+            </div>
+        </div>
+        <div class='col-lg-4 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 zoomIn animated wow'>
+            <div class='right'>
+                <div class='imgg'>
+                    <img src='~/ico/2.png' alt='Design and programming of Websites'>
+                </div>
+                <span>@SiteResource.Trainig</span>
+                <p>@SiteResource.TrainigDesc</p>
+            </div>
+            <div class='left'>
+                <div class='imgg2'></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="services">
+
+        <div class='col-lg-4 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 zoomIn animated wow'>
+            <div class='right'>
+                <div class='imgg'>
+                    <img src='~/ico/5.png' alt='Design and programming of Websites'>
+                </div>
+                <span>@SiteResource.TechnicalProduction</span>
+                <p>@SiteResource.TechnicalProductionDes</p>
+            </div>
+            <div class='left'>
+                <div class='imgg3'></div>
+
+            </div>
+        </div>
+
+        <div class='col-lg-4 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 zoomIn animated wow'>
+            <div class='right'>
+                <div class='imgg'>
+                    <img src='~/ico/4.png' alt='Design and programming of Websites'>
+                </div>
+                <span>@SiteResource.DesignGames</span>
+                <p>@SiteResource.DesignGamesDesc</p>
+            </div>
+            <div class='left'>
+                <div class='imgg4'></div>
+
+            </div>
+        </div>
+
+        <div class='col-lg-4 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 zoomIn animated wow'>
+            <div class='right'>
+                <div class='imgg'>
+                    <img src='~/ico/fotorecord-marketing-icon.png' alt='Design and programming of Websites'>
+                </div>
+                <span>@SiteResource.Emarkting</span>
+                <p>@SiteResource.emarktingdesc</p>
+            </div>
+            <div class='left'>
+                <div class='imgg5'></div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<div class="host-design">
+    <div class="container main">
+        <div class="HDS DesginSection">
+        </div>
+    </div>
+</div>
+
+<div class="features">
+    <div class="top">
+        <div class="text">
+            <div class="container">
+                <span class="flipInX animated wow">@SiteResource.GetStarted</span>
+                <p class="flipInX animated wow">@SiteResource.HomeDescFotter</p>
+            </div>
+        </div>
+        <div class="image">
+            <div class="container">
+                <!--<img src="../resources/images/features-image.png" alt="">-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="host-design">
+    <div class="container main">
+        <div class="HDS DesginSection">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12 col-sm-offset-0 flipInX animated wow">
+                <span class="top">@SiteResource.Pricing</span>
+            </div>
+            <p class="flipInX animated wow">@SiteResource.PricingDesc</p>
+        </div>
+    </div>
+</div>
+
+@*<div class="buildwebsite clouds">
+    <span class="flipInX animated wow">@SiteResource.Easy</span>
+    <div class="container">
+        <img src="~/images/image1.png" alt="">
+        <div class="one fadeInUp animated wow">
+            <span>@SiteResource.Register</span>
+            <img src="~/images/image2.png" alt="">
+        </div>
+        <div class="two fadeInUp animated wow">
+            <span>@SiteResource.Choosing </span>
+            <img src="~/images/image3.png" alt="">
+        </div>
+        <div class="three fadeInUp animated wow">
+            <span>@SiteResource.Design</span>
+            <img src="~/images/image4.png" alt="">
+        </div>
+        <div class="four fadeInUp animated wow">
+            <span>@SiteResource.Confirmation</span>
+            <img src="~/images/image5.png" alt="">
+        </div>
+        <div class="five fadeInUp animated wow">
+            <span>@SiteResource.GetStarted</span>
+            <img src="~/images/image6.png" alt="">
+        </div>
+        <div class="six fadeInUp animated wow">
+            <span>@SiteResource.TheSupport</span>
+            <img src="~/images/image7.png" alt="">
+        </div>
+    </div>
+    <a href="~/Home/Pricing" class="flipInX animated wow">@SiteResource.Order</a>
+</div>*@
+
+<div class="ourcustomers">
+    <div class="container main">
+        <div class="col-lg-10 col-lg-offset-1 col-sm-12 col-sm-offset-0 flipInX animated wow">
+            <span class="top">@SiteResource.RooayaDevelopment</span>
+        </div>
+        <p class="flipInX animated wow">@SiteResource.HomeHead</p>
+        <p class="flipInX animated wow">@SiteResource.WhatCompanyOffer</p>
+    </div>
+</div>
+
+<div class="searchdomain">
+    <div class="container main">
+        <div class="col-lg-10 col-lg-offset-1 col-sm-12 col-sm-offset-0 flipInX animated wow">
+            <span class="top">@SiteResource.Subscribe</span>
+        </div>
+        <p class="flipInX animated wow">@SiteResource.EnterYourEmail</p>
+        <form id="CheckDomain" action="~/Home/Subscribe" method="post">
+            <div class="domsec">
+                <input type="email"s required name="Email" placeholder="@SiteResource.EnterYourEmail">
+                <button type="submit" id="subscribe" style="width:81px; height:55px; margin:0px; border-radius:50px;">
+                    @SiteResource.Subscribe
+                </button>
+            </div>
+        </form>
+        <div class="CheckDomainAlerts"></div>
+    </div>
+</div>

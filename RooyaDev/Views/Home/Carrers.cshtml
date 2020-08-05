@@ -1,0 +1,203 @@
+﻿@model IEnumerable<RooyaDev.Models.Carrer>
+@using RooyaDev.Models
+@{
+    ViewBag.Title = SiteResource.Carrers;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    string code = "en";
+    string aa = "right";
+    if (Request.Cookies["Language"] != null)
+    {
+        if (Request.Cookies["Language"].Value == "ar")
+        {
+            code = "ar";
+            aa = "left";
+        }
+    }
+}
+<style>
+        <style>
+        .tp-banner ul li {
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .image img {
+        }
+
+        .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn {
+            width: 412px;
+            border: 2px solid blue;
+            color: white;
+            background-color: #128ae3;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+    </style>
+<style>
+    h2 {
+        color: white;
+    }
+</style>
+<style>
+    #messages {
+        padding: 15px 10px;
+        margin: 15px 0;
+        border: 1px solid #ff9900;
+        color: #ff9900;
+        text-align: center;
+    }
+
+        #messages p {
+            color: #555;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+        }
+</style>
+
+<div class="page">
+    <div class="image" style="background-image: url(../../images/createwebsite-image.jpg)"></div>
+    <div class="text">
+        <div class="container">
+            <img src="~/images/carrers.png" alt="">
+            <span>@SiteResource.Carrers</span>
+            <p>
+                @SiteResource.Apply
+            </p>
+        </div>
+    </div>
+</div>
+@if (ViewBag.error != null)
+{
+    <div id="messages">
+        <h4>@ViewBag.error</h4>
+    </div>
+}
+@if (Model.Count() >= 1)
+{
+    <div class='prog-desg'>
+        <div class='container'>
+            @foreach (var item in Model)
+            {
+                <div class='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+                    <div class='one'>
+                        <span style="border: 2px solid #1d90d4; border-radius: 15px;">@item.Name</span>
+                        <p>
+                            <h3>@SiteResource.AboutJob</h3>
+                        <p>@item.Description</p>
+                        <h3>@SiteResource.JobType</h3>
+                        <p>@item.Type</p>
+                        <h3>@SiteResource.Salary</h3>
+                        <p>@item.Salary</p>
+                        <h3>@SiteResource.Location</h3>
+                        <p>@item.Country</p>
+                        @if (code == "en")
+                        {
+                            <h3>Skills </h3>
+                                                    <p>
+                                                        <ul style="list-style:inherit;list-style-position:inside;">
+                                                           @foreach (var i in item.Skills)
+	{
+		 <li>@i.Name</li>
+	}
+                                                        </ul>
+                                                    </p>
+                                                    <h3> Requierment </h3>
+                                                    <p>
+                                                        <ul style="list-style:inherit;list-style-position:inside;">
+                                                            @foreach (var i in item.Requirments)
+                                                            {
+                                                                <li>@i.Name</li>
+                                                            }
+                                                        </ul>
+                                                    </p>
+                        }
+                        else
+                        {
+                            <h3>المهارات </h3>
+                            <p>
+                                <ul style="list-style:inherit;list-style-position:inside;">
+                                    @foreach (var i in item.Skills)
+                                    {
+                                        <li>@i.Name</li>
+                                    }
+                                </ul>
+                            </p>
+                                                    <h3> الشروط </h3>
+                                                    <p>
+                                                        <ul style="list-style:inherit;list-style-position:inside;">
+                                                            @foreach (var i in item.Requirments)
+                                                            {
+                                                                <li>@i.Name</li>
+                                                            }
+                                                        </ul>
+                                                    </p>
+                        }
+
+                        <h3>@SiteResource.ApplyInthisjob</h3>
+                        <div class="ContactUs RequestForm">
+                            <div class="container">
+                                <br><br>
+                                <div class="Details">
+                                    <div class="ContactUsForm wow bounceInUp">
+                                        <form id="RequestForm" action="~/Home/Carrers" enctype="multipart/form-data" method="post">
+                                            <div class="inputs">
+                                                <input id="Hidden1" name="Carrer_ID" value="@item.ID" type="hidden" />
+                                                <input type="text" name="Name" placeholder="Name" required="">
+                                                <input type="text" id="phone" name="Phone" placeholder="Mobile:" required="">
+                                                <input type="email" name="Email" placeholder="Email:" required="">
+                                                @*<div class="upload-btn-wrapper">
+                                                        <label for="myfile" class="btn">Upload PDF file ...</label>
+                                                        <input type="file" required id="myfile" name="myfile" />
+                                                    </div>*@
+                                                <input id="File1" type="file" name="myfile" />
+                                                <input type="submit" name="Send" value="Apply">
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br><br>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+}
+else
+{
+    <h1>@SiteResource.NoCarrers</h1>
+}
+<script>
+
+                var phone = document.getElementById("phone");
+                phone.onchange = function () {
+                    var p = document.getElementById("phone");
+                    if (p.value.length > 11 || isNaN(p.value)) {
+                        document.getElementById("phone").setCustomValidity("Phone Must Be < 12 Number & No Chars");
+                    } else {
+                        document.getElementById("phone").setCustomValidity('');
+                    }
+                }
+</script>

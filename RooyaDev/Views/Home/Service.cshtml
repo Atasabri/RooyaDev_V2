@@ -1,0 +1,117 @@
+﻿@model RooyaDev.Models.Service
+@using RooyaDev.Models
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    string code = "en";
+    string aa = "right";
+    if (Request.Cookies["Language"] != null)
+    {
+        if (Request.Cookies["Language"].Value == "ar")
+        {
+            code = "ar";
+            aa = "left";
+        }
+    }
+    if (code == "en")
+    {
+        ViewBag.Title = Model.Name;
+    }
+    else
+    {
+        ViewBag.Title = Model.Name_AR;
+    }
+}
+<style>
+    .fa-check:before {
+            color:green;
+            font-size:30px;
+        }
+        ul li span{
+            font-size:30px;
+        }
+               /*ATTA*/
+        .col-lg-4 ul li {
+            font-size:18px;
+            background-color: #128ae3;
+            border-radius: 18px;
+            line-height: 2;
+           border: 1px solid #0006;
+           margin-top:4px;
+           width: 430px;
+        }
+         /*ATTA*/
+</style>
+@if (code == "en")
+{
+    <div class="page">
+        <div class="image" style="background-image: url(../../images/createwebsite-image.jpg)"></div>
+        <div class="text">
+            <div class="container">
+                <span>@Model.Name</span>
+                @foreach (var item in Model.Heads)
+                {
+                    <div class="col-lg-4 col-lg-offset-1 col-md-6 col-sm-6 col-xs-12 slideInRight animated wow" style="font-size:24px;">
+                        <ul style="list-style-type:disc;  list-style-position: inside;">
+                            <li>@item.Name</li>
+                        </ul>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+    <section class="OneNews">
+        <div class="container">
+            <div class="OneNewsContainer">
+                <h1>@Model.Name</h1>
+                <img src="~/Uploads/Services/@(Model.ID).jpg" style="width:30%" />
+                <div class="TopicBody">
+                    <h3 style="line-height: 35px;">
+                        @Model.Description
+                    </h3>
+                    <div class="Content"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <div class="page">
+        <div class="image" style="background-image: url(../../images/createwebsite-image.jpg)"></div>
+        <div class="text">
+            <div class="container">
+                <span>@Model.Name_AR</span>
+                @foreach (var item in Model.Heads)
+                {
+                    <div class="col-lg-4 col-lg-offset-1 col-md-6 col-sm-6 col-xs-12 slideInRight animated wow" style="font-size:24px;">
+                        <ul style="list-style-type:disc;  list-style-position: inside;">
+                            <li>@item.Name_AR</li>
+                        </ul>
+                    </div>
+                }
+                
+
+            </div>
+        </div>
+    </div>
+
+    <section class="OneNews">
+        <div class="container">
+            <div class="OneNewsContainer">
+                <h1>@Model.Name_AR</h1>
+                <img src="~/Uploads/Services/@(Model.ID).jpg" style="width:30%" />
+                <div class="TopicBody">
+                    <h3 style="line-height: 35px;">
+                        @Model.Description_AR
+                    </h3>
+                    <div class="Content"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+
